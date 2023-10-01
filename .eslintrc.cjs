@@ -10,13 +10,8 @@ module.exports = {
   },
   extends: ["@nuxtjs/eslint-config-typescript", "plugin:prettier/recommended"],
   plugins: [],
-  rules: {},
-  "overrides": [
-    {
-      "files": ["**/*.test.js", "**/*.spec.js"],
-      "rules": {
-        "no-unused-expressions": "off"
-      }
-    }
-  ]
+  rules: {
+    "comma-dangle": 0,
+    "no-unused-expressions": "off",
+  },
 };

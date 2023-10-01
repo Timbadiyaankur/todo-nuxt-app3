@@ -12,9 +12,9 @@ describe("home.vue", () => {
     };
     await wrapper.vm.setTodo(newTodo);
     await wrapper.vm.addOrEditTodo();
-    const isTodoAdded = wrapper.vm.todos.some(
-      (todo) => todo.title === newTodo.title && todo.content === newTodo.content
-    );
+    const isTodoAdded = wrapper.vm.todos.some((todo) => {
+      return todo.title === newTodo.title && todo.content === newTodo.content;
+    });
     expect(isTodoAdded).to.be.true;
   });
 
@@ -26,19 +26,19 @@ describe("home.vue", () => {
     };
     await wrapper.vm.setTodo(newTodo);
     await wrapper.vm.addOrEditTodo();
-    const isTodoAdded = wrapper.vm.todos.some(
-      (todo) => todo.title === newTodo.title && todo.content === newTodo.content
-    );
+    const isTodoAdded = wrapper.vm.todos.some((todo) => {
+      return todo.title === newTodo.title && todo.content === newTodo.content;
+    });
     expect(isTodoAdded).to.be.true;
-    const addedTodo = wrapper.vm.todos.find(
-      (todo) => todo.title === newTodo.title && todo.content === newTodo.content
-    );
+    const addedTodo = wrapper.vm.todos.find((todo) => {
+      return todo.title === newTodo.title && todo.content === newTodo.content;
+    });
     if (addedTodo && addedTodo.id) {
       await wrapper.vm.removeTodo(addedTodo.id);
     }
-    const isTodoRemoved = !wrapper.vm.todos.some(
-      (todo) => todo.title === newTodo.title && todo.content === newTodo.content
-    );
+    const isTodoRemoved = !wrapper.vm.todos.some((todo) => {
+      return todo.title === newTodo.title && todo.content === newTodo.content;
+    });
     expect(isTodoRemoved).to.be.true;
   });
 
@@ -50,14 +50,14 @@ describe("home.vue", () => {
     };
     await wrapper.vm.setTodo(newTodo);
     await wrapper.vm.addOrEditTodo();
-    const isTodoAdded = wrapper.vm.todos.some(
-      (todo) => todo.title === newTodo.title && todo.content === newTodo.content
-    );
+    const isTodoAdded = wrapper.vm.todos.some((todo) => {
+      return todo.title === newTodo.title && todo.content === newTodo.content;
+    });
     expect(isTodoAdded).to.be.true;
 
-    const addedTodo = wrapper.vm.todos.find(
-      (todo) => todo.title === newTodo.title && todo.content === newTodo.content
-    );
+    const addedTodo = wrapper.vm.todos.find((todo) => {
+      return todo.title === newTodo.title && todo.content === newTodo.content;
+    });
     if (addedTodo && addedTodo.id) {
       await wrapper.vm.completeTodo(addedTodo.id);
     }
@@ -65,7 +65,7 @@ describe("home.vue", () => {
       (todo) =>
         todo.title === newTodo.title &&
         todo.content === newTodo.content &&
-        todo.status
+        todo.status,
     );
     expect(isTodoCompleted).to.be.true;
   });
@@ -78,13 +78,13 @@ describe("home.vue", () => {
     };
     await wrapper.vm.setTodo(newTodo);
     await wrapper.vm.addOrEditTodo();
-    const isTodoAdded = wrapper.vm.todos.some(
-      (todo) => todo.title === newTodo.title && todo.content === newTodo.content
-    );
+    const isTodoAdded = wrapper.vm.todos.some((todo) => {
+      return todo.title === newTodo.title && todo.content === newTodo.content;
+    });
     expect(isTodoAdded).to.be.true;
-    const addedTodo = wrapper.vm.todos.find(
-      (todo) => todo.title === newTodo.title && todo.content === newTodo.content
-    );
+    const addedTodo = wrapper.vm.todos.find((todo) => {
+      return todo.title === newTodo.title && todo.content === newTodo.content;
+    });
     const updatedTodo = {
       id: addedTodo.id,
       title: `updated@todo-${Date.now()}`,
@@ -93,12 +93,13 @@ describe("home.vue", () => {
     await wrapper.vm.setTodo(updatedTodo);
     await wrapper.vm.setEditMode();
     await wrapper.vm.addOrEditTodo();
-    const isTodoUpdated = wrapper.vm.todos.some(
-      (todo) =>
+    const isTodoUpdated = wrapper.vm.todos.some((todo) => {
+      return (
         todo.id === addedTodo.id &&
         todo.title === updatedTodo.title &&
         todo.content === updatedTodo.content
-    );
+      );
+    });
     expect(isTodoUpdated).to.be.true;
   });
 });
