@@ -11,4 +11,12 @@ module.exports = {
   extends: ["@nuxtjs/eslint-config-typescript", "plugin:prettier/recommended"],
   plugins: [],
   rules: {},
+  "overrides": [
+    {
+      "files": ["**/*.test.js", "**/*.spec.js"],
+      "rules": {
+        "no-unused-expressions": "off"
+      }
+    }
+  ]
 };
