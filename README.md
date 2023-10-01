@@ -10,7 +10,7 @@ CREATE TABLE `todos` ( `id` INT NOT NULL AUTO_INCREMENT , `title` VARCHAR(50) NO
 
 # Connection
 # file : todo-nuxt-app3/server/mysqldb/index.ts
-# Modify connection as per your mysql credentials 
+# Modify connection as per your mysql credentials
 const pool = createPool({
   host: "localhost",
   user: "root",
@@ -29,7 +29,7 @@ Make sure to install the dependencies:
 
 ```bash
 # npm
-npm install 
+npm install
 # if any error installing package
 npm install --legacy-peer-deps
 ```
@@ -67,9 +67,8 @@ npm run preview
 
 ```
 
-### Lint
+### Linting and Formatting
 
 ```sh
-npm run lint
+npm run lintfix
 ```
-

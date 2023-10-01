@@ -31,7 +31,7 @@
               v-model="todo.content"
               rows="3"
               class="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
-            ></textarea>
+            />
           </div>
         </div>
         <div v-if="error" class="col-span-full flex">
@@ -75,20 +75,20 @@
           </thead>
           <tbody class="text-sm divide-y divide-gray-100">
             <template v-if="!!(todos || []).length">
-              <tr v-for="todo in todos" :key="todo.id">
+              <tr v-for="row in todos" :key="row.id">
                 <td class="p-2 whitespace-nowrap">
                   <div class="text-md text-center text-gray-800">
-                    {{ todo.title }}
+                    {{ row.title }}
                   </div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
                   <div class="text-md text-center text-gray-800">
-                    {{ truncate(todo.content) }}
+                    {{ truncate(row.content) }}
                   </div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
                   <div class="text-md text-center text-gray-800">
-                    {{ todo.status ? "Completed" : "Pending" }}
+                    {{ row.status ? "Completed" : "Pending" }}
                   </div>
                 </td>
                 <td class="p-2 justify-center" style="display: flex">
@@ -96,9 +96,9 @@
                     <button
                       type="button"
                       class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                      :disabled="todo.status"
-                      :class="{ 'disabled:opacity-50': todo.status }"
-                      @click="editTodo(todo.id)"
+                      :disabled="row.status"
+                      :class="{ 'disabled:opacity-50': row.status }"
+                      @click="editTodo(row.id)"
                     >
                       Edit
                     </button>
@@ -106,9 +106,9 @@
                   <div class="p-1">
                     <button
                       class="rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
-                      :disabled="todo.status"
-                      :class="{ 'disabled:opacity-50': todo.status }"
-                      @click="completeTodo(todo.id)"
+                      :disabled="row.status"
+                      :class="{ 'disabled:opacity-50': row.status }"
+                      @click="completeTodo(row.id)"
                     >
                       Complete
                     </button>
@@ -116,7 +116,7 @@
                   <div class="p-1">
                     <button
                       class="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
-                      @click="removeTodo(todo.id)"
+                      @click="removeTodo(row.id)"
                     >
                       Remove
                     </button>
@@ -131,8 +131,8 @@
   </div>
 </template>
 <script>
-import { ref, onMounted } from "vue";
 import axios from "axios";
+import { onMounted, ref } from "vue";
 export default {
   name: "Home",
   setup() {
